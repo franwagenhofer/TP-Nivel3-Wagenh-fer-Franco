@@ -11,13 +11,12 @@ namespace negocio
 {
     public class UsuarioNegocio
     {
-
         public int insertarNuevo(Usuario nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearProcedimiento("insertarNuevo");
+                datos.setearConsulta("INSERT INTO USERS (email, pass, admin) OUTPUT INSERTED.id VALUES (@email, @pass, 0)");
                 datos.setearParametro("@email", nuevo.Email);
                 datos.setearParametro("@pass", nuevo.Pass);
                 return datos.ejecutarAccionScalar();
@@ -30,7 +29,6 @@ namespace negocio
             {
                 datos.cerrarConexion();
             }
-
         }
 
         public void actualizar(Usuario user)
@@ -91,18 +89,18 @@ namespace negocio
 
         public bool EmailYaRegistrado(string email)
         {
-                AccesoDatos datos = new AccesoDatos();
+            AccesoDatos datos = new AccesoDatos();
             try
             {
                 datos.setearConsulta("Select count(*) from Users where email = @email");
                 datos.setearParametro("@email", email);
 
-                int count = (int)datos.ejecutarEscalar(); 
-                return count > 0; 
+                int count = (int)datos.ejecutarEscalar();
+                return count > 0;
             }
             catch (Exception ex)
             {
-                throw ex; 
+                throw ex;
             }
             finally
             {
@@ -115,7 +113,7 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT INTO Favoritos (IdUser, IdArticulo) VALUES (@IdUser, @IdArticulo)");
+                datos.setearConsulta("Insert into Favoritos (IdUser, IdArticulo) values (@IdUser, @IdArticulo)");
                 datos.setearParametro("@IdUser", IdUser);
                 datos.setearParametro("@IdArticulo", IdArticulo);
                 datos.ejecutarAccion();
@@ -197,7 +195,5 @@ namespace negocio
                 throw ex;
             }
         }
-
-
     }
 }

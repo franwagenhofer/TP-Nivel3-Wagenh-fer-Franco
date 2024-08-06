@@ -46,7 +46,9 @@ namespace TPNivel3_Catalogo_Web
                     FavoritosList = usuarioNegocio.ObtenerFavoritos(IdUser);
 
                     ArticuloNegocio articuloNegocio = new ArticuloNegocio();
-                    Session["listaArticulos"] = articuloNegocio.listarConSP();
+                    //Session["listaArticulos"] = articuloNegocio.listarConSP();
+                    Session["listaArticulos"] = articuloNegocio.listarArticulos();
+
                     BindFavoritos();
                 }
             }

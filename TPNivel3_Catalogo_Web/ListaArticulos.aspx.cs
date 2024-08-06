@@ -24,7 +24,7 @@ namespace TPNivel3_Catalogo_Web
             if (!IsPostBack)
             {
                 ArticuloNegocio negocio = new ArticuloNegocio();
-                Session.Add("listaArticulos", negocio.listarConSP());
+                Session.Add("listaArticulos", negocio.listarArticulos());
                 dgvArticulos.DataSource = Session["listaArticulos"];
                 dgvArticulos.DataBind();
             }

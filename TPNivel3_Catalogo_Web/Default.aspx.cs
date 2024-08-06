@@ -16,26 +16,17 @@ namespace TPNivel3_Catalogo_Web
         protected void Page_Load(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            ListaArticulo = negocio.listarConSP();
+            //ListaArticulo = negocio.listarConSP();
+            ListaArticulo = negocio.listarArticulos();
 
             if (!IsPostBack)
             {
-                // Guarda la lista de artículos en la sesión
                 Session["listaArticulos"] = ListaArticulo;
 
                 repRepetidor.DataSource = ListaArticulo;
                 repRepetidor.DataBind();
             }
         }
-
-        //protected void txtFiltro_TextChanged(object sender, EventArgs e)
-        //{
-        //    List<Articulo> lista = (List<Articulo>)Session["listaArticulos"];
-        //    List<Articulo> listaFiltrada = lista.FindAll(x => x.Nombre.ToUpper().Contains(txtFiltro.Text.ToUpper()));
-        //    repRepetidor.DataSource = listaFiltrada;
-        //    repRepetidor.DataBind();
-        //}
-
 
         protected void txtFiltro_TextChanged(object sender, EventArgs e)
         {
@@ -45,7 +36,6 @@ namespace TPNivel3_Catalogo_Web
 
                 if (lista == null)
                 {
-                    // Maneja el caso en que la lista de artículos no esté en la sesión
                     lblError.Text = "No se pudo cargar la lista de artículos.";
                     lblError.Visible = true;
                     return;
@@ -64,21 +54,14 @@ namespace TPNivel3_Catalogo_Web
                     lblMensaje.Style["display"] = "none";
                 }
 
-
-
                 repRepetidor.DataSource = listaFiltrada;
                 repRepetidor.DataBind();
             }
             catch (Exception ex)
             {
-                // Maneja cualquier error que ocurra durante el filtrado
                 lblError.Text = "Ocurrió un error al filtrar los artículos: " + ex.Message;
                 lblError.Visible = true;
             }
         }
-
-
-
-
     }
 }

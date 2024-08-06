@@ -13,7 +13,7 @@ using System.Collections;
 namespace negocio
 {
     public class ArticuloNegocio
-    {     
+    {
         public List<Articulo> listarParaModificar(string id = "")
         {
             List<Articulo> lista = new List<Articulo>();
@@ -31,7 +31,7 @@ namespace negocio
                     comando.CommandText += " and A.Id = " + id;
 
                 comando.Connection = conexion;
-                
+
                 conexion.Open();
                 lector = comando.ExecuteReader();
 
@@ -68,14 +68,15 @@ namespace negocio
             }
         }
 
-        public List<Articulo> listarConSP()
+        public List<Articulo> listarArticulos()
         {
             List<Articulo> lista = new List<Articulo>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearProcedimiento("storedListar");
+                datos.setearConsulta("Select Codigo, Nombre, A.Descripcion, C.Descripcion as Categoria, M.Descripcion as Marca, ImagenUrl, Precio, A.IdMarca, A.IdCategoria, A.Id from ARTICULOS A, CATEGORIAS C, MARCAS M where A.IdMarca = M.Id and A.IdCategoria = C.Id ");
                 datos.ejecutarLectura();
+
                 while (datos.Lector.Read())
                 {
                     Articulo aux = new Articulo();
@@ -93,6 +94,7 @@ namespace negocio
                     aux.Marca = new Marca();
                     aux.Marca.Id = (int)datos.Lector["IdMarca"];
                     aux.Marca.Descripcion = (string)datos.Lector["Marca"];
+
                     aux.Categoria = new Categoria();
                     aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
                     aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
@@ -106,22 +108,27 @@ namespace negocio
             {
                 throw ex;
             }
-
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
 
-        public void agregarConSP(Articulo nuevo)
+
+        public void agregarArticulo(Articulo nuevo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearProcedimiento("storedAltaArticulo");
-                datos.setearParametro("@nombre", nuevo.Nombre);
+                datos.setearConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, Precio, IdMarca, IdCategoria, ImagenUrl) VALUES (@codigo, @nombre, @desc, @precio, @idMarca, @idCategoria, @ImagenUrl) ");
                 datos.setearParametro("@codigo", nuevo.Codigo);
+                datos.setearParametro("@nombre", nuevo.Nombre);
                 datos.setearParametro("@precio", nuevo.Precio);
                 datos.setearParametro("@desc", nuevo.Descripcion);
-                datos.setearParametro("@imagenUrl", nuevo.ImagenUrl);
+                datos.setearParametro("@ImagenUrl", nuevo.ImagenUrl);
                 datos.setearParametro("@idMarca", nuevo.Marca.Id);
                 datos.setearParametro("@idCategoria", nuevo.Categoria.Id);
+
                 datos.ejecutarAccion();
             }
             catch (Exception ex)
@@ -134,12 +141,13 @@ namespace negocio
             }
         }
 
-        public void modificarConSP(Articulo articulo)
+
+        public void modificarArticulo(Articulo articulo)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearProcedimiento("storedModificarArticulo");
+                datos.setearConsulta("UPDATE ARTICULOS SET Codigo = @codigo, Nombre = @nombre, Descripcion = @desc, Precio = @precio, ImagenUrl = @ImagenUrl, IdMarca = @idMarca, IdCategoria = @idCategoria WHERE Id = @id ");
                 datos.setearParametro("@nombre", articulo.Nombre);
                 datos.setearParametro("@codigo", articulo.Codigo);
                 datos.setearParametro("@precio", articulo.Precio);
@@ -147,7 +155,7 @@ namespace negocio
                 datos.setearParametro("@ImagenUrl", articulo.ImagenUrl);
                 datos.setearParametro("@idMarca", articulo.Marca.Id);
                 datos.setearParametro("@idCategoria", articulo.Categoria.Id);
-                datos.setearParametro("@id", articulo.Id); 
+                datos.setearParametro("@id", articulo.Id);
 
                 datos.ejecutarAccion();
             }
@@ -264,6 +272,6 @@ namespace negocio
                 throw ex;
             }
         }
-    
+
     }
 }

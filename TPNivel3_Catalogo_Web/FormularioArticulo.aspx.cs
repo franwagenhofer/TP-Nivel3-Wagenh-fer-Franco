@@ -14,7 +14,7 @@ namespace TPNivel3_Catalogo_Web
     public partial class FormularioArticulos : System.Web.UI.Page
     {
         public bool ConfirmaEliminacion { get; set; }
-       
+
         protected void Page_Load(object sender, EventArgs e)
         {
             txtId.Enabled = false;
@@ -59,11 +59,11 @@ namespace TPNivel3_Catalogo_Web
                         txtImagenUrl_TextChanged(sender, e);
 
 
-                        btnEliminar.Visible = true; 
+                        btnEliminar.Visible = true;
                     }
                     else
                     {
-                        btnEliminar.Visible = false; 
+                        btnEliminar.Visible = false;
                     }
                 }
             }
@@ -145,23 +145,24 @@ namespace TPNivel3_Catalogo_Web
                 nuevo.ImagenUrl = txtImagenUrl.Text;
                 nuevo.Precio = precio;
                 //nuevo.Precio = decimal.Parse(txtPrecio.Text);
-              
+
                 nuevo.Marca = new Marca();
-                nuevo.Marca.Id = int.Parse(ddlMarca.SelectedValue);           
+                nuevo.Marca.Id = int.Parse(ddlMarca.SelectedValue);
                 nuevo.Categoria = new Categoria();
                 nuevo.Categoria.Id = int.Parse(ddlCategoria.SelectedValue);
 
                 if (Request.QueryString["id"] != null)
                 {
                     nuevo.Id = int.Parse(txtId.Text);
-                    negocio.modificarConSP(nuevo);
+                    negocio.modificarArticulo(nuevo);
+
                 }
                 else
-                    negocio.agregarConSP(nuevo);
+                    negocio.agregarArticulo(nuevo);
 
                 Response.Redirect("ListaArticulos.aspx", false);
             }
-            
+
             catch (Exception ex)
             {
                 Session.Add("error", ex.ToString());
