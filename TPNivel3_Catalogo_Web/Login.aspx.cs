@@ -33,17 +33,26 @@ namespace TPNivel3_Catalogo_Web
                     if (string.IsNullOrWhiteSpace(txtEmail.Text))
                     {
 
-                        lblErrorEmail.Text = "Por favor, ingrese un email válido.";
+                        lblErrorEmail.Text = "Por favor, ingrese un correo válido.";
                         lblErrorEmail.Visible = true;
                         hayErrores = true;
                     }
                     else
                     {
-                        lblErrorEmail.Text = "Email inválido. Intente nuevamente.";
+                        lblErrorEmail.Text = "Correo inválido. Intente nuevamente.";
                         lblErrorEmail.Visible = true;
                         hayErrores = true;
                     }
+
                 }
+                else if (EmailValido(txtEmail.Text) && !(negocio.EmailRegistrado(txtEmail.Text)))
+                {
+                    lblErrorEmail.Text = "Correo no registrado. Intente nuevamente.";
+                    lblErrorEmail.Visible = true;
+                    hayErrores = true;
+                }
+
+
 
                 if (string.IsNullOrWhiteSpace(txtPassword.Text) || txtPassword.Text.Length < 4)
                 {

@@ -139,25 +139,19 @@
     <div class="form">
         <div class="row">
             <div class="col-4 container">
-
                 <div class="mb-3 container-inputs">
-                    <label class="form-label">Email</label>
+                    <label class="form-label">Correo electrónico</label>
                     <asp:TextBox runat="server" CssClass="form-control input-field" ID="txtEmail" required=""/>
                     <asp:Label ID="lblErrorEmail" runat="server" CssClass="text-color" Visible="false"></asp:Label>
-
                 </div>
                 <div class="mb-3 container-inputs">
                     <label class="form-label">Contraseña</label>
                     <asp:TextBox runat="server" CssClass="form-control input-field" ID="txtPassword" TextMode="Password" required=""/>
                     <asp:Label ID="lblErrorPass" runat="server" CssClass="text-color" Visible="false"></asp:Label>
-
                 </div>
-
                 <asp:Button Text="Ingresar" class="" ID="btnLogin" OnClick="btnLogin_Click" runat="server" />
                 <a class="btnCancelar" href="/">Cancelar</a>
-
                 <p class="class-p">¿No tienes una cuenta? <a class="link" href="Registro.aspx">Registrarse</a></p>
-
             </div>
         </div>
     </div>

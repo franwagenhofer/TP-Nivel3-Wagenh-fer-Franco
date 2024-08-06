@@ -87,7 +87,7 @@ namespace negocio
             }
         }
 
-        public bool EmailYaRegistrado(string email)
+        public bool EmailRegistrado(string email)
         {
             AccesoDatos datos = new AccesoDatos();
             try

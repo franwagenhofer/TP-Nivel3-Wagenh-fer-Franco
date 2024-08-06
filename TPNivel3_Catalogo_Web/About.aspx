@@ -9,7 +9,7 @@
 
         .CajaContactos {
             display: flex;
-            /* gap: 40px; */ /* Espacio entre los contenedores principales */
+            /* gap: 40px; */
             text-align: center;
         }
 
@@ -21,12 +21,12 @@
         }
 
             .contacto li {
-                margin-bottom: 10px; /* Espacio entre los elementos de la lista */
+                margin-bottom: 10px;
             }
 
             .contacto a {
                 color: white;
-                text-decoration: none; /* Elimina el subrayado de los enlaces */
+                text-decoration: none; 
             }
 
                 .contacto a:hover {
@@ -34,7 +34,7 @@
                 }
 
         .h-tres {
-            margin-bottom: 10px; /* Espacio entre el título y la lista */
+            margin-bottom: 10px;
         }
     </style>
 
@@ -100,10 +100,13 @@
             <h3 class="h-tres">Contactos</h3>
             <ul class="contacto">
                 <li>
-                    <p>Email: Catalogo@Catalogo.com</p>
+                    <p>E-mail: Catalogo@Catalogo.com</p>
                 </li>
                 <li>
                     <p>Teléfono: +549 1155555555</p>
+                </li>
+                <li>
+                    <p>WhatsApp: +549 1155555555</p>
                 </li>
             </ul>
         </div>

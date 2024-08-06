@@ -31,13 +31,13 @@ namespace TPNivel3_Catalogo_Web
 
                 if (string.IsNullOrWhiteSpace(txtEmail.Text) || !EmailValido(txtEmail.Text))
                 {
-                    lblErrorEmail.Text = "Por favor, ingrese un email válido.";
+                    lblErrorEmail.Text = "Por favor, ingrese un correo válido.";
                     lblErrorEmail.Visible = true;
                     hayErrores = true;
                 }
-                else if (usuarioNegocio.EmailYaRegistrado(txtEmail.Text))
+                else if (usuarioNegocio.EmailRegistrado(txtEmail.Text))
                 {
-                    lblErrorEmail.Text = "Este email ya está registrado.";
+                    lblErrorEmail.Text = "Este correo ya está registrado.";
                     lblErrorEmail.Visible = true;
                     hayErrores = true;
                 }

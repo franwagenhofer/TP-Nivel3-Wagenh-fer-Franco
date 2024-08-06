@@ -10,7 +10,6 @@
             margin-top: 60px;
         }
 
-
         .container-inputs {
             font-size: 28px;
             margin-bottom: 10px;
@@ -51,13 +50,6 @@
             color: white;
         }
 
-        p {
-            font-size: 1rem;
-            text-align: center;
-            margin: 3%;
-            font-size: 1rem;
-            padding: 0 30px;
-        }
 
         .link {
             color: white;
@@ -88,7 +80,6 @@
                 padding: 35px;
                 border-radius: 80px;
                 text-align: center;
-                ;
             }
 
             .container-inputs {
@@ -113,9 +104,8 @@
     <div class="form">
         <div class="row">
             <div class="col-4 container text-center">
-
                 <div class="mb-3 container-inputs">
-                    <label class="form-label">Email</label>
+                    <label class="form-label">Correo electrónico</label>
                     <asp:TextBox runat="server" CssClass="form-control input-field" ID="txtEmail" required="" />
                     <asp:Label ID="lblErrorEmail" runat="server" CssClass="text-color" Visible="false"></asp:Label>
                 </div>
@@ -124,15 +114,11 @@
                     <asp:TextBox runat="server" CssClass="form-control input-field" ID="txtPassword" TextMode="Password" required="" />
                     <asp:Label ID="lblErrorPass" runat="server" CssClass="text-color" Visible="false"></asp:Label>
                 </div>
-
                 <asp:Button Text="Registrarse" CssClass="button-style button-asp" ID="Button1" OnClick="btnRegistrarse_Click" runat="server" />
                 <a class="button-style link-style" href="/">Cancelar</a>
                 <p class="class-p">¿Ya tienes una cuenta? <a class="link" href="Login.aspx">Iniciar Sesión</a></p>
-
             </div>
         </div>
     </div>
 
 </asp:Content>
-
-
