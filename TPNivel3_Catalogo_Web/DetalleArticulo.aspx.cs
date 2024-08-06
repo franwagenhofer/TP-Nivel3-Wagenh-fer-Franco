@@ -39,7 +39,6 @@ namespace TPNivel3_Catalogo_Web
                     {
                         ArticuloNegocio negocio = new ArticuloNegocio();
 
-                        //List<Articulo> listaArticulos = negocio.listarConSP();
                         List<Articulo> listaArticulos = negocio.listarArticulos();
 
 
@@ -70,7 +69,6 @@ namespace TPNivel3_Catalogo_Web
             ArticuloNegocio negocio = new ArticuloNegocio();
             UsuarioNegocio favorito = new UsuarioNegocio();
 
-            //List<Articulo> listaArticulos = negocio.listarConSP();
             List<Articulo> listaArticulos = negocio.listarArticulos();
 
             Articulo articulo = listaArticulos.FirstOrDefault(a => a.Id == id);
