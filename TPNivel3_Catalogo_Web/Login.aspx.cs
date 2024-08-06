@@ -43,7 +43,6 @@ namespace TPNivel3_Catalogo_Web
                         lblErrorEmail.Visible = true;
                         hayErrores = true;
                     }
-
                 }
                 else if (EmailValido(txtEmail.Text) && !(negocio.EmailRegistrado(txtEmail.Text)))
                 {
@@ -51,8 +50,6 @@ namespace TPNivel3_Catalogo_Web
                     lblErrorEmail.Visible = true;
                     hayErrores = true;
                 }
-
-
 
                 if (string.IsNullOrWhiteSpace(txtPassword.Text) || txtPassword.Text.Length < 4)
                 {
@@ -74,7 +71,6 @@ namespace TPNivel3_Catalogo_Web
                 {
                     return;
                 }
-
 
                 usuario.Email = txtEmail.Text;
                 usuario.Pass = txtPassword.Text;
