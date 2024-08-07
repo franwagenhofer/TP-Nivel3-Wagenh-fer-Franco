@@ -75,7 +75,7 @@ namespace TPNivel3_Catalogo_Web
                 }
 
             }
-            catch (System.Threading.ThreadAbortException ex) { }
+            //catch (System.Threading.ThreadAbortException ex) { }
             catch (Exception ex)
             {
                 Session.Add("error", ex.ToString());

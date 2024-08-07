@@ -26,6 +26,14 @@
             margin-top: 1rem;
         }
 
+        .hover-card {
+            transition: transform 0.3s ease;
+        }
+
+            .hover-card:hover {
+                transform: scale(1.05);
+                z-index: 1;
+            }
 
         .linea {
             margin: 0.5rem;
@@ -59,7 +67,7 @@
         <asp:Repeater runat="server" ID="repRepetidor">
             <ItemTemplate>
                 <div class="col mb-4">
-                    <div class="card h-100">
+                    <div class="card h-100 hover-card">
                         <img src="<%#Eval("ImagenUrl") %>" class="card-img-top" alt="...">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title text-center"><%#Eval("Nombre") %></h5>

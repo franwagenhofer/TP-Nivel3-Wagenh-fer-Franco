@@ -91,7 +91,7 @@ namespace TPNivel3_Catalogo_Web
                     Response.Redirect("Error.aspx", false);
                 }
             }
-            catch (System.Threading.ThreadAbortException ex) { }
+            //catch (System.Threading.ThreadAbortException ex) { }
             catch (Exception ex)
             {
                 Session.Add("error", ex.ToString());

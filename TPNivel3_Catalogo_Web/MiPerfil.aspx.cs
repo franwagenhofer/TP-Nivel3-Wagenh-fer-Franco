@@ -53,7 +53,7 @@ namespace TPNivel3_Catalogo_Web
                     {
                         lblErrorNombre.Text = "El nombre debe tener al menos 3 caracteres.";
                     }
-                    else 
+                    else
                     {
                         lblErrorNombre.Text = "El nombre no puede tener más de 15 caracteres.";
                     }
@@ -86,6 +86,8 @@ namespace TPNivel3_Catalogo_Web
 
                 Image img = (Image)Master.FindControl("imgAvatar");
                 img.ImageUrl = "~/Imagenes/" + user.ImagenPerfil;
+                img.ImageUrl = user.ImagenPerfil;
+
 
                 Response.Redirect("Default.aspx", false);
 

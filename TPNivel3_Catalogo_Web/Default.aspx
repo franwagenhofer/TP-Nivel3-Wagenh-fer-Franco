@@ -14,6 +14,15 @@
             margin-top: .5rem !important;
             margin-bottom: 1rem;
         }
+
+        .hover-card {
+            transition: transform 0.3s ease;
+        }
+
+            .hover-card:hover {
+                transform: scale(1.05);
+                z-index: 1; /* Para asegurarse de que la tarjeta se superponga a las demás */
+            }
     </style>
 
 </asp:Content>
@@ -24,7 +33,7 @@
     <%--<hr />--%>
     <br />
 
-<%--    <div class="row justify-content-center">
+    <%--    <div class="row justify-content-center">
     </div>--%>
     <div class="col-4">
         <div class="mb-3">
@@ -38,11 +47,12 @@
     <h5 id="lblMensaje" runat="server" class="text text-center" style="display: none; margin-top: 3rem;"></h5>
 
     <asp:Label ID="lblError" runat="server" CssClass="text-danger" Visible="false"></asp:Label>
+
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <asp:Repeater runat="server" ID="repRepetidor">
             <ItemTemplate>
                 <div class="col mb-4">
-                    <div class="card h-100">
+                    <div class="card h-100 hover-card">
                         <img src="<%#Eval("ImagenUrl") %>" class="card-img-top" alt="...">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title text-center"><%#Eval("Nombre") %></h5>
